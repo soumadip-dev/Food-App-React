@@ -2,6 +2,8 @@
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  color: inherit;
   box-sizing: border-box;
 }
 
@@ -40,6 +42,7 @@ body {
   cursor: pointer;
   transition: color 0.3s ease;
 }
+
 
 .nav-items li:last-child {
   margin-right: 0;
@@ -281,7 +284,7 @@ footer p {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .about-content {
@@ -360,7 +363,7 @@ footer p {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .contact-content {

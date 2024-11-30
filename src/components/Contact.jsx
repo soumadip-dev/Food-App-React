@@ -12,9 +12,9 @@ const Contact = () => {
         <div className="contact-info">
           <h2>Our Contact Details</h2>
           <ul>
-            <li>Email: support@rasoii.com</li>
-            <li>Phone: +1 800 123 4567</li>
-            <li>Address: 123 Food Street, City, Country</li>
+            <li>Email: support@rasoii.in</li>
+            <li>Phone: +91 800 123 4567</li>
+            <li>Address: CityCenter, Durgapur, Country</li>
           </ul>
         </div>
       </div>

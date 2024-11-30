@@ -1,9 +1,10 @@
-import { FaShoppingCart } from "react-icons/fa"; // Cart icon
-import logo from "../assets/rasoii.png"; // Logo image
-import { useState } from "react"; // useState hook
+import { useState } from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import logo from '../assets/rasoii.png';
 
 const Header = () => {
-  const [btnContent, setBtnContent] = useState("Login"); // State to toggle button text
+  const [btnContent, setBtnContent] = useState('Login'); // State to toggle button text
 
   return (
     <div className="header">
@@ -12,9 +13,15 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="./about">About Us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact Us</Link>
+          </li>
           <li className="cart-icon">
             <FaShoppingCart />
           </li>
@@ -22,9 +29,9 @@ const Header = () => {
             <button
               className="login-btn"
               onClick={() => {
-                btnContent === "Login"
-                  ? setBtnContent("Logout")
-                  : setBtnContent("Login");
+                btnContent === 'Login'
+                  ? setBtnContent('Logout')
+                  : setBtnContent('Login');
               }}
             >
               {btnContent}
