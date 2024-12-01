@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ResturantCard from './ResturantCard';
 import ShimmerCart from './ShimmerCart';
 
 const Body = () => {
-  // State variable to store restaurant data
+  // State variables to store restaurant data
   const [listOfResturant, setListOfResturant] = useState([]);
   const [fileredResturant, setFileredResturant] = useState([]);
   const [searchText, setSearchText] = useState('');
@@ -24,8 +25,14 @@ const Body = () => {
     // Set fetched data to state
     const restaurants =
       json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-    setListOfResturant(restaurants);
-    setFileredResturant(restaurants);
+
+    if (restaurants) {
+      setListOfResturant(restaurants);
+      setFileredResturant(restaurants);
+    } else {
+      setListOfResturant([]);
+      setFileredResturant([]);
+    }
   };
 
   // Function to handle search
@@ -45,9 +52,11 @@ const Body = () => {
 
   // Function to handle top-rated restaurants filter
   const handleTopRated = () => {
-    const filteredList = listOfResturant.filter(res => res.info.avgRating > 4);
+    const filteredList = listOfResturant.filter(
+      res => res.info.avgRating > 4.6
+    );
     setFileredResturant(filteredList);
-    setSearchError(filteredList.length === 0); // Update searchError if no results
+    setSearchError(filteredList.length === 0);
   };
 
   return listOfResturant.length === 0 ? (
@@ -64,7 +73,7 @@ const Body = () => {
             value={searchText}
             onChange={e => {
               setSearchText(e.target.value);
-              setSearchError(false); // Reset search error when input changes
+              setSearchError(false);
             }}
           />
           <button className="search-btn" onClick={handleSearch}>
@@ -84,7 +93,12 @@ const Body = () => {
           </div>
         )}
         {fileredResturant.map(resturant => (
-          <ResturantCard key={resturant.info.id} resData={resturant} />
+          <Link
+            key={resturant.info.id}
+            to={'/restaurants/' + resturant.info.id}
+          >
+            <ResturantCard resData={resturant} />
+          </Link>
         ))}
       </div>
     </div>

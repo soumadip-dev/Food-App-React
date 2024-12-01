@@ -43,7 +43,6 @@ body {
   transition: color 0.3s ease;
 }
 
-
 .nav-items li:last-child {
   margin-right: 0;
 }
@@ -509,6 +508,141 @@ footer p {
   transform: scale(1.05);
 }
 
+/* Main Container */
+.restaurant-menu-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  background: #fff;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  max-width: 800px;
+  margin: 50px auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.restaurant-menu-container:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* Restaurant Info */
+.restaurant-info {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.restaurant-name {
+  font-size: 36px;
+  font-weight: bold;
+  color: #e94c20;
+}
+
+.restaurant-meta {
+  font-size: 18px;
+  margin: 10px 0;
+  color: #555;
+}
+
+.restaurant-location,
+.restaurant-delivery-time {
+  font-size: 16px;
+  color: #777;
+  margin: 5px 0;
+}
+
+/* Menu Section */
+.menu-section {
+  width: 100%;
+}
+
+.menu-title {
+  font-size: 28px;
+  color: #333;
+  text-align: left;
+  border-bottom: 2px solid #e94c20;
+  margin-bottom: 20px;
+}
+
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: #e94c20;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.item-name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  flex: 2;
+}
+
+.item-price {
+  font-size: 16px;
+  color: #666;
+  margin-left: 20px;
+  flex: 1;
+  text-align: right;
+}
+
+.item-image img {
+  width: 75px; /* Increased size */
+  height: 75px; /* Increased size */
+  border-radius: 8px;
+  margin-left: 20px;
+  flex: 0.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .restaurant-menu-container {
+    padding: 20px;
+  }
+
+  .restaurant-name {
+    font-size: 28px;
+  }
+
+  .menu-title {
+    font-size: 24px;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-price {
+    margin-left: 0;
+    margin-top: 5px;
+    text-align: left;
+  }
+
+  .item-image img {
+    margin: 10px 0 0;
+    width: 100px; /* Adjusted for better visibility on smaller screens */
+    height: 100px; /* Adjusted for better visibility on smaller screens */
+  }
+}
+
 /* Media query for smaller screens */
 @media (max-width: 768px) {
   /* Header layout for mobile */
@@ -646,13 +780,40 @@ footer p {
     font-size: 16px;
   }
 
+   .restaurant-menu-container {
+    padding: 20px;
+  }
+
+  .restaurant-name {
+    font-size: 28px;
+  }
+
+  .menu-title {
+    font-size: 24px;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .item-price {
+    margin-left: 0;
+    margin-top: 5px;
+    text-align: left;
+  }
+
+  .item-image img {
+    margin: 10px 0 0;
+  }
+
   /* Footer fix for mobile */
   .footer {
     padding: 20px;
   }
 }
 
-/*----------------- Shimmer Animation ---------------------*/
+/*----------------- Shimmer Animation (Home page) ---------------------*/
 
 @keyframes shimmer-animation {
   from {
@@ -760,4 +921,70 @@ footer p {
 
 .shimmer-delivery {
   width: 50%;
+}
+
+/*----------------- Shimmer Animation (ResturantMenu page) ---------------------*/
+
+/* Shimmer Styles */
+.shimmer-res-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 50px auto;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.shimmer-res-header {
+  width: 60%;
+  height: 30px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.shimmer-res-meta {
+  width: 40%;
+  height: 20px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.shimmer-res-item {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+/* Different styles for specific shimmer items */
+.shimmer-res-item-1 {
+  width: 80%;
+}
+.shimmer-res-item-2 {
+  width: 70%;
+}
+.shimmer-res-item-3 {
+  width: 90%;
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }

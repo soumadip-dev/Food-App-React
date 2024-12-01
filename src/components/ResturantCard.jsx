@@ -1,4 +1,4 @@
-import { CON_URL } from "../utils/constants";
+import { CON_URL } from '../utils/constants';
 
 const ResturantCard = ({ resData }) => {
   // Destructure relevant data from resData
@@ -14,10 +14,10 @@ const ResturantCard = ({ resData }) => {
       <h3 className="res-name">{name}</h3>
 
       {/* Average rating */}
-      <p className="res-rating">{`🌟 ${avgRating}`}</p>
+      <p className="res-rating">{`⭐ ${avgRating}`}</p>
 
       {/* List of cuisines */}
-      <p className="res-cuisines">{cuisines.join(", ")}</p>
+      <p className="res-cuisines">{cuisines.join(', ')}</p>
 
       {/* Delivery time */}
       <p className="res-delivery">{`Delivery Time: ${sla.slaString}`}</p>
