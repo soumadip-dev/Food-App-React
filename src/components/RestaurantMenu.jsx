@@ -59,17 +59,23 @@ const RestaurantMenu = () => {
           {itemCards.length > 0 ? (
             itemCards.map((item, index) => (
               <li key={item.card?.info?.id || index} className="menu-item">
-                <span className="item-name">
-                  {item.card?.info?.name || 'Not present'}
-                </span>
-                <span className="item-price">
-                  ₹
-                  {item?.card?.info?.finalPrice / 100 ||
-                    item?.card?.info?.defaultPrice / 100 ||
-                    item?.card?.info?.price / 100 ||
-                    '99'}
-                </span>
-                <span className="item-image">
+                <div className="item-content">
+                  <span className="item-name">
+                    {item.card?.info?.name || 'Not present'}
+                  </span>
+                  <span className="item-price">
+                    ₹
+                    {item?.card?.info?.finalPrice / 100 ||
+                      item?.card?.info?.defaultPrice / 100 ||
+                      item?.card?.info?.price / 100 ||
+                      '99'}
+                  </span>
+                  <span className="item-description">
+                    {item.card?.info?.description ||
+                      ''}
+                  </span>
+                </div>
+                <div className="item-image">
                   <img
                     src={
                       item?.card?.info?.imageId === undefined
@@ -78,7 +84,7 @@ const RestaurantMenu = () => {
                     }
                     alt=""
                   />
-                </span>
+                </div>
               </li>
             ))
           ) : (

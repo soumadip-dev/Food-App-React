@@ -17,19 +17,27 @@ const Body = () => {
 
   // Function to fetch restaurant data
   const fetchData = async () => {
-    const response = await fetch(
-      'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
-    );
-    const json = await response.json();
+    try {
+      const response = await fetch(
+        'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
+      );
+      const json = await response.json();
 
-    // Set fetched data to state
-    const restaurants =
-      json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      // Set fetched data to state
+      const restaurants =
+        json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
 
-    if (restaurants) {
-      setListOfResturant(restaurants);
-      setFileredResturant(restaurants);
-    } else {
+      if (restaurants) {
+        setListOfResturant(restaurants);
+        setFileredResturant(restaurants);
+      } else {
+        console.error('No restaurant data found');
+        setListOfResturant([]);
+        setFileredResturant([]);
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
       setListOfResturant([]);
       setFileredResturant([]);
     }
@@ -56,8 +64,13 @@ const Body = () => {
       res => res.info.avgRating > 4.6
     );
     setFileredResturant(filteredList);
-    setSearchError(filteredList.length === 0);
+    setSearchError(filteredList.length === 0); // Update searchError if no results
   };
+
+  // Check if listOfResturant is empty before rendering
+  if (!Array.isArray(listOfResturant)) {
+    return <ShimmerCart />;
+  }
 
   return listOfResturant.length === 0 ? (
     <ShimmerCart />
@@ -73,7 +86,7 @@ const Body = () => {
             value={searchText}
             onChange={e => {
               setSearchText(e.target.value);
-              setSearchError(false);
+              setSearchError(false); // Reset search error when input changes
             }}
           />
           <button className="search-btn" onClick={handleSearch}>
