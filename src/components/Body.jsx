@@ -9,6 +9,7 @@ const Body = () => {
   const [fileredResturant, setFileredResturant] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [searchError, setSearchError] = useState(false);
+  const [isTopRatedActive, setIsTopRatedActive] = useState(false);
 
   // Fetch data from the API on component mount
   useEffect(() => {
@@ -60,11 +61,16 @@ const Body = () => {
 
   // Function to handle top-rated restaurants filter
   const handleTopRated = () => {
-    const filteredList = listOfResturant.filter(
-      res => res.info.avgRating > 4.6
-    );
-    setFileredResturant(filteredList);
-    setSearchError(filteredList.length === 0); // Update searchError if no results
+    if (isTopRatedActive) {
+      setFileredResturant(listOfResturant);
+    } else {
+      const filteredList = listOfResturant.filter(
+        res => res.info.avgRating > 4.6
+      );
+      setFileredResturant(filteredList);
+      setSearchError(filteredList.length === 0); // Update searchError if no results
+    }
+    setIsTopRatedActive(!isTopRatedActive);
   };
 
   // Check if listOfResturant is empty before rendering
