@@ -19,9 +19,18 @@ const Body = () => {
   // Function to fetch restaurant data
   const fetchData = async () => {
     try {
+      // Original
       const response = await fetch(
         'https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
       );
+      // Cors anywher
+      // const response = await fetch(
+      //   'https://cors-anywhere.herokuapp.com/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
+      // );
+      // Thin Proxy
+      // const response = await fetch(
+      //   'https://thingproxy.freeboard.io/fetch/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING'
+      // );
       const json = await response.json();
 
       // Set fetched data to state

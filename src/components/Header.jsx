@@ -25,7 +25,9 @@ const Header = () => {
             <Link to="/contact">Contact Us</Link>
           </li>
           <li className="cart-icon">
-            <FaShoppingCart />
+            <Link to="./cart">
+              <FaShoppingCart />
+            </Link>
           </li>
           <li>
             <button

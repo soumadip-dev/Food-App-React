@@ -277,11 +277,6 @@ body {
   transition: all 0.3s ease;
 }
 
-.about-content:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
-}
-
 .about-container h1 {
   font-size: 36px;
   color: #e94c20;
@@ -330,8 +325,8 @@ body {
   font-size: 22px;
   margin-right: 15px;
 }
-.about-team h2{
-   font-size: 24px;
+.about-team h2 {
+  font-size: 24px;
   color: #e94c20;
   margin-bottom: 10px;
   font-weight: 700;
@@ -356,11 +351,6 @@ body {
   width: 100%;
   text-align: center;
   transition: all 0.3s ease;
-}
-
-.contact-content:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
 }
 
 .contact-container h1 {
@@ -433,11 +423,6 @@ body {
   transition: all 0.3s ease;
 }
 
-.error-content:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-}
-
 .error-heading {
   font-size: 72px;
   color: #e94c20;
@@ -495,11 +480,6 @@ body {
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease;
-}
-
-.restaurant-menu-container:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
 .restaurant-info {
@@ -614,6 +594,50 @@ body {
 
 footer p {
   color: #888;
+}
+/*------------Shimmer Animation (Home page)------------*/
+/* CartPage.css */
+.cart-container {
+  max-width: 800px;
+  margin: 50px auto;
+  text-align: center;
+  padding: 50px 20px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cart-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.empty-cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.empty-cart-icon {
+  font-size: 4rem;
+  color: #7f8c8d;
+  background-color: #ecf0f1;
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.empty-cart-text {
+  font-size: 1.3rem;
+  color: #34495e;
+  font-weight: 500;
+}
+
+.cart-items {
+  /* Add your cart item styles here */
 }
 
 /*------------Shimmer Animation (Home page)------------*/
@@ -989,7 +1013,9 @@ footer p {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
   background-color: #f9f9f9;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .team-cart-container:hover {
@@ -1040,4 +1066,3 @@ footer p {
     height: 90px;
   }
 }
-
