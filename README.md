@@ -4,6 +4,14 @@ Rasoii is a food delivery application designed to provide seamless access to a w
 
 ---
 
+## Screenshot
+
+Here’s a preview of the Rasoii application:
+
+![Rasoii Screenshot](src/assets/ss.png)
+
+---
+
 ## Features
 
 - **User-friendly Interface**: Easy navigation and intuitive design.
