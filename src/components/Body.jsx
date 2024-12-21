@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import ResturantCard from './ResturantCard';
+import RestaurantCard from './RestaurantCard';
 import ShimmerCart from './ShimmerCart';
 
 const Body = () => {
@@ -125,7 +125,7 @@ const Body = () => {
             key={resturant.info.id}
             to={'/restaurants/' + resturant.info.id}
           >
-            <ResturantCard resData={resturant} />
+            <RestaurantCard resData={resturant} />
           </Link>
         ))}
       </div>

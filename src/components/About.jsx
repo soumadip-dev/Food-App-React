@@ -6,10 +6,12 @@ class About extends Component {
   constructor() {
     super();
   }
+
   render() {
     return (
       <div className="about-container">
         <div className="about-content">
+          {/* About Section */}
           <h1>About Rasoii</h1>
           <p className="about-description">
             Welcome to Rasoii, your go-to food delivery app. Whether you're
@@ -17,6 +19,8 @@ class About extends Component {
             best restaurants and cuisines straight to your door. Enjoy fast,
             reliable, and seamless delivery at your convenience.
           </p>
+
+          {/* Values Section */}
           <div className="about-values">
             <h2>Our Values</h2>
             <ul>
@@ -26,35 +30,38 @@ class About extends Component {
               <li>Excellent Customer Support</li>
             </ul>
           </div>
+
+          {/* Team Section */}
           <div className="about-team">
             <h2>Meet Our Team</h2>
             <div className="team-container">
+              {/* Individual Team Member Components */}
               <TeamClass
-                user_name={'soumadip-dev'}
-                p_name={'Soumadip Majila'}
-                p_role={'Founder'}
-                p_location={'Durgapur-India'}
+                user_name="soumadip-dev"
+                p_name="Soumadip Majila"
+                p_role="Founder"
+                p_location="Durgapur-India"
                 p_url={DUMMY_USR_URL_M}
               />
               <TeamClass
-                user_name={'mainakchakrabortyCodes'}
-                p_name={'Mainak Chakraborty'}
-                p_role={'App Developer'}
-                p_location={'Chakda-India'}
+                user_name="mainakchakrabortyCodes"
+                p_name="Mainak Chakraborty"
+                p_role="App Developer"
+                p_location="Chakda-India"
                 p_url={DUMMY_USR_URL_M}
               />
               <TeamClass
-                user_name={'singhsanket143'}
-                p_name={'Sanket Singh'}
-                p_role={'Manager'}
-                p_location={'Bengalore-India'}
+                user_name="singhsanket143"
+                p_name="Sanket Singh"
+                p_role="Manager"
+                p_location="Bengalore-India"
                 p_url={DUMMY_USR_URL_M}
               />
               <TeamClass
-                user_name={'riyabansal98'}
-                p_name={'Riya Bansal'}
-                p_role={'Web Developer'}
-                p_location={'Bengalore-India'}
+                user_name="riyabansal98"
+                p_name="Riya Bansal"
+                p_role="Web Developer"
+                p_location="Bengalore-India"
                 p_url={DUMMY_USR_URL_F}
               />
             </div>
@@ -64,4 +71,5 @@ class About extends Component {
     );
   }
 }
+
 export default About;

@@ -1,27 +1,18 @@
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { MENU_API, MENU_IMG_URL, MENU_IMG_URL_NA } from '../utils/constants';
-import ShimmeResturant from './ShimmerResturant';
+import { MENU_IMG_URL, MENU_IMG_URL_NA } from '../utils/constants';
+import useRestaurantMenu from '../utils/useRestaurantMenu';
+import ShimmeRestaurant from './ShimmeRestaurant';
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  const { resId } = useParams();
+  const { resId } = useParams(); // Get restaurant ID from the route parameters
 
-  useEffect(() => {
-    fetchMenu();
-  }, []);
+  // Fetch restaurant menu data using a custom hook
+  const resInfo = useRestaurantMenu(resId);
 
-  const fetchMenu = async () => {
-    const response = await fetch(MENU_API + resId);
-    const data = await response.json();
-    setResInfo(data?.data);
-    console.log(
-      data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2 || 1]
-        ?.card?.card?.itemCards
-    );
-  };
-  if (resInfo === null) return <ShimmeResturant />;
+  // Show shimmer UI while data is being fetched
+  if (resInfo === null) return <ShimmeRestaurant />;
 
+  // Extract restaurant details with default fallback values
   const {
     name = 'Restaurant Name',
     cuisines = [],
@@ -31,16 +22,19 @@ const RestaurantMenu = () => {
     areaName = 'Location not available',
   } = resInfo?.cards?.[2]?.card?.card?.info || {};
 
+  // Extract menu items from the fetched data
   const { itemCards } =
-    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-  console.log(itemCards);
+    resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+      ?.card || {};
 
+  // Extract delivery time information
   const slaString =
     resInfo?.cards?.[2]?.card?.card?.info?.sla?.slaString ||
     'Delivery time not available';
 
   return (
     <div className="restaurant-menu-container">
+      {/* Restaurant Information Section */}
       <div className="restaurant-info">
         <h1 className="restaurant-name">{name}</h1>
         <p className="restaurant-meta">
@@ -53,10 +47,11 @@ const RestaurantMenu = () => {
         <p className="restaurant-delivery-time">🚚 Delivery: {slaString}</p>
       </div>
 
+      {/* Menu Section */}
       <div className="menu-section">
         <h2 className="menu-title">Menu</h2>
         <ul className="menu-list">
-          {itemCards.length > 0 ? (
+          {itemCards?.length > 0 ? (
             itemCards.map((item, index) => (
               <li key={item.card?.info?.id || index} className="menu-item">
                 <div className="item-content">
@@ -71,8 +66,7 @@ const RestaurantMenu = () => {
                       '99'}
                   </span>
                   <span className="item-description">
-                    {item.card?.info?.description ||
-                      ''}
+                    {item.card?.info?.description || ''}
                   </span>
                 </div>
                 <div className="item-image">
@@ -82,7 +76,7 @@ const RestaurantMenu = () => {
                         ? MENU_IMG_URL_NA
                         : MENU_IMG_URL + item?.card?.info?.imageId
                     }
-                    alt=""
+                    alt={item.card?.info?.name || 'Menu item image'}
                   />
                 </div>
               </li>

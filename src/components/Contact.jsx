@@ -4,11 +4,14 @@ const Contact = () => {
   return (
     <div className="contact-container">
       <div className="contact-content">
+        {/* Header Section */}
         <h1>Contact Us</h1>
         <p className="contact-description">
           We're here to help! If you have any questions or feedback, feel free
           to reach out to us. Our team will get back to you as soon as possible.
         </p>
+
+        {/* Contact Details Section */}
         <div className="contact-info">
           <h2>Our Contact Details</h2>
           <ul>
