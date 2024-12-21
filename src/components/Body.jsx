@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useOnlineStatus from '../utils/useOnlineStatus';
+import OnlineStatus from './OnlineStatus';
 import RestaurantCard from './RestaurantCard';
 import ShimmerCart from './ShimmerCart';
 
@@ -81,6 +83,9 @@ const Body = () => {
     }
     setIsTopRatedActive(!isTopRatedActive);
   };
+
+  const onlineStatus = useOnlineStatus();
+  if (onlineStatus === false) return <OnlineStatus />;
 
   // Check if listOfResturant is empty before rendering
   if (!Array.isArray(listOfResturant)) {
